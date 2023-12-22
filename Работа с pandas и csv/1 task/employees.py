@@ -11,5 +11,5 @@ def avg_jobtitle_age(employees_csv):
     avg_age = employees_csv.groupby('Должность')['Возраст'].mean().to_dict()
     return avg_age
 
-employees = pd.read_csv("1 task\employees.csv")
+employees = pd.read_csv("Работа с pandas и csv\\1 task\\employees.csv")
 print(avg_jobtitle_age(employees))
