@@ -8,7 +8,7 @@ from todo import app
 client = TestClient(app)
 
 def test_delete_task_success():
-    response = client.delete("/tasks/2")
+    response = client.delete("/tasks/1")
     assert response.status_code == 200
 
 def test_delete_task_not_found():

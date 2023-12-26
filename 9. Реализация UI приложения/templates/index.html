@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Конвертер чисел</title>
+</head>
+<body>
+    <form action="/convert" method="post">
+        <textarea name="arabic_number" placeholder="Введите число"></textarea>
+        <br><br>
+        <button type="submit">Конвертировать</button>
+    </form>
+    <br><br>
+    {% if arabic_number %}
+    <textarea readonly>{{ roman_number }}</textarea>
+    {% endif %}
+</body>
+</html>

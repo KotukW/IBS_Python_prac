@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список дел</title>
+    <style>
+        .task-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        .completed {
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+    <h1>Список дел</h1>
+
+    <form action="/add-task/" method="post" target="hidden-form">
+        <input type="text" name="description" required>
+        <button type="submit">Добавить дело</button>
+    </form>
+    <ul>
+        {% for task in tasks %}
+        <li class="task-item">
+            <form action="/update-task/" method="post" target="hidden-form">
+                <input type="hidden" name="task_id" value="{{ task.id }}">
+                <input type="checkbox" {% if task.done %} checked {% endif %}
+                    onchange="this.form.submit()">
+            </form>
+            <span class="{% if task.done %}completed{% endif %}">
+                {{ task.description }}
+            </span>
+            <form action="/delete-task/" method="post" onsubmit="return confirm('Вы уверены, что хотите удалить задачу {{ task.description }}?');">
+                <input type="hidden" name="task_id" value="{{ task.id }}">
+                <button type="submit" style="color: red;">❌</button>
+            </form>          
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -7,7 +7,7 @@ from todo import app
 client = TestClient(app)
 
 def test_get_task_by_id_success():
-    response = client.get("/tasks/10")
+    response = client.get("/tasks/3")
     assert response.status_code == 200
 
 def test_get_task_by_id_not_found():

@@ -1,7 +1,5 @@
 FROM python:3.10-buster
 
-ENV PYTHONUNBUFFERED 1
-
 COPY . /app
 
 WORKDIR /app
